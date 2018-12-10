@@ -76,6 +76,7 @@
                     // EmployeeService project before running it
                     success: function (response) {
                         sessionStorage.setItem("accessToken", response.access_token);
+                        localStorage.setItem("userName", response.userName);
                         window.location.href = "Data.html";
                         $('#divErrorText').text(JSON.stringify(response));
                     },
