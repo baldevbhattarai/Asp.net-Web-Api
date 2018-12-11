@@ -64,7 +64,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            if (sessionStorage.getItem('accessToken') == null) {
+            if (localStorage.getItem('accessToken') == null) {
                 window.location.href = "Login.html";
             }
             $('#spanUsername').text('Hello ' + localStorage.getItem('userName'));
@@ -74,7 +74,7 @@
             });
 
             $('#btnLogoff').click(function () {
-                sessionStorage.removeItem('accessToken');
+                localStorage.removeItem('accessToken');
                 window.location.href = "Login.html";
             });
             $('#errorModal').on('hidden.bs.modal', function () {
@@ -87,7 +87,7 @@
                     method: 'GET',
                     headers: {
                         'Authorization': 'Bearer '
-                            + sessionStorage.getItem("accessToken")
+                            + localStorage.getItem("accessToken")
                     },
                     success: function (data) {
                         $('#divData').removeClass('hidden');

@@ -38,7 +38,7 @@ namespace EmployeeService
                 TokenEndpointPath = new PathString("/Token"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromSeconds(20),
+                AccessTokenExpireTimeSpan = TimeSpan.FromHours(10),
                 // In production mode set AllowInsecureHttp = false
                 AllowInsecureHttp = true
             };
@@ -59,11 +59,11 @@ namespace EmployeeService
             //    appId: "",
             //    appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "1066363340522-egee8urhf6d351k06jv9q0j0qmhbi27n.apps.googleusercontent.com",
+                ClientSecret = "KPMi0fFao2NEvo6DaR-EZ8DE"
+            });
         }
     }
 }

@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/GoogleAuthentication.js"></script>
 </head>
 <body style="padding-top:20px">
     <div class="col-md-10 col-md-offset-1">
@@ -43,6 +44,23 @@
                     </tr>
                 </tbody>
             </table>
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="success">
+                        <th>
+                            Social Logins
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="button" id="btnGoogleLogin"
+                                   value="Login with Google" class="btn btn-success" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <!--Bootstrap alert to display error message if the login fails-->
             <div id="divError" class="alert alert-danger collapse">
                 <a id="linkClose" href="#" class="close">&times;</a>
@@ -54,8 +72,13 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
+            getAccessToken();
+
             $('#linkClose').click(function () {
                 $('#divError').hide('fade');
+            });
+            $('#btnGoogleLogin').click(function () {
+                window.location.href = "/api/Account/ExternalLogin?provider=Google&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A50454%2FLogin.html&state=XLp7JF0NZKWmfOpTIQpYPcP4TtsW-cu_5hLaGcpAhxw1";
             });
 
             $('#btnLogin').click(function () {
@@ -75,7 +98,7 @@
                     // this page yet. So please add it to the
                     // EmployeeService project before running it
                     success: function (response) {
-                        sessionStorage.setItem("accessToken", response.access_token);
+                        localStorage.setItem("accessToken", response.access_token);
                         localStorage.setItem("userName", response.userName);
                         window.location.href = "Data.html";
                         $('#divErrorText').text(JSON.stringify(response));
