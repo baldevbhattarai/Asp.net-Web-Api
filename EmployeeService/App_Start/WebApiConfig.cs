@@ -16,7 +16,8 @@ namespace EmployeeService
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-
+            //attribute for enabling ssl, which also redirects http to https
+            config.Filters.Add(new RequireHttpsAttribute());
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -25,6 +26,7 @@ namespace EmployeeService
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            
         }
     }
 }

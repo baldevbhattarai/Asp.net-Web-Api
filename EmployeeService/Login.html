@@ -59,6 +59,12 @@
                                    value="Login with Google" class="btn btn-success" />
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <input type="button" id="btnFacebookLogin"
+                                   value="Login with Facebook" class="btn btn-success" />
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <!--Bootstrap alert to display error message if the login fails-->
@@ -78,9 +84,11 @@
                 $('#divError').hide('fade');
             });
             $('#btnGoogleLogin').click(function () {
-                window.location.href = "/api/Account/ExternalLogin?provider=Google&response_type=token&client_id=self&redirect_uri=http%3A%2F%2Flocalhost%3A50454%2FLogin.html&state=XLp7JF0NZKWmfOpTIQpYPcP4TtsW-cu_5hLaGcpAhxw1";
+                window.location.href = "/api/Account/ExternalLogin?provider=Google&response_type=token&client_id=self&redirect_uri=https%3A%2F%2Flocalhost%3A44337%2FLogin.html&state=Vm48dH1ai-BEaGNsB_Vhv31cmWlDux3DPrK5lM2Tg5k1";
             });
-
+            $('#btnFacebookLogin').click(function () {
+                window.location.href = "/api/Account/ExternalLogin?provider=Facebook&response_type=token&client_id=self&redirect_uri=https%3A%2F%2Flocalhost%3A44337%2FLogin.html&state=Vm48dH1ai-BEaGNsB_Vhv31cmWlDux3DPrK5lM2Tg5k1";
+            });
             $('#btnLogin').click(function () {
                 $.ajax({
                     // Post username, password & the grant type to /token

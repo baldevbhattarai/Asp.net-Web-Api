@@ -5,6 +5,7 @@ using System.Web.Http;
 namespace EmployeeService.Controllers
 {
     [Authorize]
+    [RequireHttpsAttribute]
     public class EmployeesController : ApiController
     {
         public IEnumerable<Employee> Get()
